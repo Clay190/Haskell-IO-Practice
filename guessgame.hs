@@ -39,15 +39,26 @@
     I KNEW IT! Thank you.
 -}
 
-guessIt :: Int -> IO ()
-guessIt 11 = putStrLn "Wait.. I have already guessed everything! Cheater."
-guessIt s = do
-    putStrLn $ "Is your number " ++ show s ++ "? (answer \"yes\" or \"no\") "
-    guess <- getLine
-    if guess == "yes"
-        then putStrLn "I KNEW IT! Thank you."
-        else guessIt (s+1)
+--guessIt :: Int -> IO ()
+--guessIt 11 = putStrLn "Wait.. I have already guessed everything! Cheater."
+--guessIt s = do
+--    putStrLn $ "greater or equal to" ++ nextGuess low high
+  --  if guess == "yes"
+    --    then putStrLn "I KNEW IT! Thank you."
+      --  putStrLn $ "Guessed list is" ++ show guessIt
+        --else guessed ++ guessIt(s)
+    --    guessIt (s+1)
 
-main = do
-    putStrLn "Think of a number between 1 and 10 and I will guess it."
-    guessIt 1
+--main = do
+  --  putStrLn "Think of a number between 1 and 10 and I will guess it."
+    --guessIt 1
+
+nextGuess low high = do
+    putStrLn $ "Is your number higher or equal to" ++ show (((high-low) `div` 2)+low)
+    answer <- getLine
+    putStrLn $ show(low) ++ show(high)
+    if answer == "yes" then if (low+1) == high then putStrLn $ "Your number is " ++ show(high)
+        else nextGuess (((high-low) `div` 2)+low) high
+    else nextGuess low (((high-low) `div` 2)+low)
+    
+-- ISSUE: made a function instead of the do block, since the function calls on itself, I can't just replace the nextGuess function with a main statement...
