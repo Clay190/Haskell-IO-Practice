@@ -13,4 +13,6 @@
 -}
 
 main = do
-    putStrLn "Hello, world!"
+    putStrLn "Hello my enthusiastic reader, what is your name?"
+    name <- getLine
+    putStrLn $ "Hello my new friend " ++ name
