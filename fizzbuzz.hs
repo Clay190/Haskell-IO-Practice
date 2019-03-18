@@ -47,6 +47,13 @@
 -- Copy your fizzBuzz function and supporting functions here
 
 
+fizzBuzz n f b = [if (x `mod` f == 0) || (x `mod` b ==0) then if x `mod` f== 0 then if x `mod` b == 0 then "FizzBuzz" else "Fizz" else "BUzz" else show x | x <- [1..n]]
 
-main = putStrLn "Put your program here!"
-
+main = do
+    putStrLn "How many numbers shall we print"
+    nums <- readLn
+    putStrLn "For multiples of what numbers shall we print 'Fizz'"
+    fizzNum <- readLn
+    putStrLn "For multiples of what numbers shall we print 'Buzz'"
+    buzzNum <- readLn
+    mapM_ putStrLn $ fizzBuzz nums fizzNum buzzNum
