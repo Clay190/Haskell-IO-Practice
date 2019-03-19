@@ -53,12 +53,18 @@
   --  putStrLn "Think of a number between 1 and 10 and I will guess it."
     --guessIt 1
 
+-- ISSUE: gitmade a function instead of the do block, since the function calls on itself, I can't just replace the nextGuess function with a main statement...
+
+main = nextGuess 1 1000
+
 nextGuess low high = do
     putStrLn $ "Is your number higher or equal to" ++ show (((high-low) `div` 2)+low)
     answer <- getLine
     putStrLn $ show(low) ++ show(high)
-    if answer == "yes" then if (low+1) == high then putStrLn $ "Your number is " ++ show(high)
+    if answer == "yes" then if (low+1) == high then do 
+            putStrLn $ "Is your number higher than " ++ show(low)
+            final <- getLine
+            if final == "yes" then putStrLn $ "Your number is " ++ show(high)
+                else putStrLn $ "Your number is " ++ show(low)
         else nextGuess (((high-low) `div` 2)+low) high
     else nextGuess low (((high-low) `div` 2)+low)
-    
--- ISSUE: made a function instead of the do block, since the function calls on itself, I can't just replace the nextGuess function with a main statement...
