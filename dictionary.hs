@@ -37,7 +37,7 @@
     Boston
     No, Boston is not in the dictionary.
     Type any word and I will tell you if it is in the dictionary:
-    Bastion
+    Bastion n 
     Yes, Bastion is in the dictionary.
     Type any word and I will tell you if it is in the dictionary:
     
@@ -45,4 +45,13 @@
     
 -}
 
-main = putStrLn "Put your program here!"
+import Data.Char (toLower)
+
+main = do
+    dictionary <- readFile "/usr/share/dict/american-english"
+    putStrLn "Type any word and I will tell you if it is in the dictionary:"
+    inputWord <- getLine
+    let word = map toLower inputWord
+    let dict = words dictionary
+    if elem word $ dict then putStrLn $ "Yes, " ++ word ++ " is in the dictionary."
+    else putStrLn $ "No, " ++ word ++ " is not in the dictionary."
