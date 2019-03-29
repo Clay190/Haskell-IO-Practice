@@ -58,9 +58,8 @@
 main = nextGuess 1 1000
 
 nextGuess low high = do
-    putStrLn $ "Is your number higher or equal to" ++ show (((high-low) `div` 2)+low)
+    putStrLn $ "Is your number higher or equal to " ++ show (((high-low) `div` 2)+low)
     answer <- getLine
-    putStrLn $ show(low) ++ show(high)
     if answer == "yes" then if (low+1) == high then do 
             putStrLn $ "Is your number higher than " ++ show(low)
             final <- getLine
