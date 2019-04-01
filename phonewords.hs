@@ -51,4 +51,4 @@ main = do
     num <- readLn
     dictionary <- readFile "/usr/share/dict/american-english"
     let dict = words dictionary
-    mapM_ (putStrLn) [show x|x<-dict, wordsToPhone(x) == num]
+    mapM_ putStrLn [show x|x<-dict, wordsToPhone(x) == num]
